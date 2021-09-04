@@ -99,8 +99,6 @@ class QuizFragment : Fragment() {
 
         setHasOptionsMenu(true)
 
-
-
         return binding.root
 
     }
