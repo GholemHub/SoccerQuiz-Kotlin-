@@ -1,10 +1,14 @@
 package com.example.soccerquiz
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.*
+import android.widget.ImageView
+import androidx.core.os.HandlerCompat.postDelayed
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.soccerquiz.databinding.FragmentQuizBinding
 
@@ -35,15 +39,22 @@ class QuizFragment : Fragment() {
     private var quizItemIndex = 0
     private val numberOfQuestions = 2
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
         // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<FragmentQuizBinding>(inflater,R.layout.fragment_quiz, container, false)
+
         getRundomQuizItem()
 
         binding.quizFragment = this
+
+
 
         binding.pass.setOnClickListener{
             view: View->
@@ -62,16 +73,25 @@ class QuizFragment : Fragment() {
                         setQuizItem()
                         binding.invalidateAll()
                     }else{
-                        view.findNavController().navigate(
-                            R.id.action_quizFragment_to_golFragment
-                        )
+                        ballAnimation()
+
+                        Handler().postDelayed({
+                            view.findNavController().navigate(
+                                R.id.action_quizFragment_to_golFragment
+                            )
+                        }, 3000)
+
                         //go golFragment
                     }
 
                 }else{
-                    view.findNavController().navigate(
-                        R.id.action_quizFragment_to_missFragment
-                    )
+                    ballAnimation()
+                    Handler().postDelayed({
+                        view.findNavController().navigate(
+                            R.id.action_quizFragment_to_missFragment
+                        )
+                    }, 3000)
+
                     //go miss
                 }
             }
@@ -83,6 +103,14 @@ class QuizFragment : Fragment() {
 
         return binding.root
 
+    }
+
+    fun ballAnimation(){
+        val ball = view?.findViewById<ImageView>(R.id.imageView3)
+
+        if (ball != null) {
+            ball.animate().rotation(3600f).translationXBy(700f).duration=2000
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

@@ -20,7 +20,7 @@
         >
 
                 <ImageView
-                        android:src="@drawable/ic_football_field"
+                        app:srcCompat="@drawable/ic_football_field"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/imageView"
@@ -33,13 +33,13 @@
                                                             app:layout_constraintGuide_begin="515dp"
                                                             android:orientation="horizontal"/>
                 <ImageView
-                        android:src="@drawable/ic_ball"
-                        android:layout_width="0dp"
+                        app:srcCompat="@drawable/ic_ball"
+                        android:layout_width="60dp"
                         android:layout_height="49dp" android:id="@+id/imageView3"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView"
                         app:layout_constraintVertical_bias="0.495"
-                        app:layout_constraintEnd_toEndOf="parent"/>
+                        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"/>
                 <TextView
                         android:text="SoccerQuiz"
                         android:layout_width="wrap_content"
